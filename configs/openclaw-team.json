@@ -1,0 +1,64 @@
+{
+  "gateway": {
+    "mode": "local",
+    "port": 18789
+  },
+  "providers": {
+    "anthropic": {
+      "apiKey": "sk-ant-YOUR-ACTUAL-KEY-HERE"
+    }
+  },
+  "agents": {
+    "list": [
+      {
+        "id": "writer",
+        "workspace": "~/.openclaw/workspace",
+        "model": {
+          "primary": "anthropic/claude-opus-4-6"
+        },
+        "subagents": {
+          "allowAgents": ["researcher", "factchecker"]
+        }
+      },
+      {
+        "id": "researcher",
+        "workspace": "~/.openclaw/workspace-researcher",
+        "model": {
+          "primary": "anthropic/claude-sonnet-4-6"
+        }
+      },
+      {
+        "id": "factchecker",
+        "workspace": "~/.openclaw/workspace-factchecker",
+        "model": {
+          "primary": "anthropic/claude-sonnet-4-6"
+        }
+      }
+    ]
+  },
+  "tools": {
+    "agentToAgent": {
+      "enabled": true,
+      "allow": ["writer", "researcher", "factchecker"]
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "writer",
+      "match": { "channel": "slack", "accountId": "default" }
+    }
+  ],
+  "channels": {
+    "slack": {
+      "enabled": true,
+      "mode": "socket",
+      "botToken": "xoxb-YOUR-BOT-TOKEN",
+      "appToken": "xapp-YOUR-APP-TOKEN",
+      "dmPolicy": "allowlist",
+      "allowFrom": ["YOUR_SLACK_USER_ID"],
+      "channels": {
+        "YOUR_CHANNEL_ID": {}
+      }
+    }
+  }
+}

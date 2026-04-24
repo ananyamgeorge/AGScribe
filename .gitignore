@@ -1,0 +1,41 @@
+# Never commit secrets
+*.env
+.env*
+secrets/
+**/openclaw.local.json
+
+# The real filled-in config should never be in git
+configs/openclaw.real.json
+openclaw.real.json
+
+# SSH keys
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temporary
+tmp/
+temp/
+
+# Node / Python / etc. (in case contributors add scripts later)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/

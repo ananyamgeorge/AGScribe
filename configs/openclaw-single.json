@@ -1,0 +1,31 @@
+{
+  "gateway": {
+    "mode": "local",
+    "port": 18789
+  },
+  "providers": {
+    "anthropic": {
+      "apiKey": "sk-ant-YOUR-ACTUAL-KEY-HERE"
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-opus-4-6"
+      }
+    }
+  },
+  "channels": {
+    "slack": {
+      "enabled": true,
+      "mode": "socket",
+      "botToken": "xoxb-YOUR-BOT-TOKEN",
+      "appToken": "xapp-YOUR-APP-TOKEN",
+      "dmPolicy": "allowlist",
+      "allowFrom": ["YOUR_SLACK_USER_ID"],
+      "channels": {
+        "YOUR_CHANNEL_ID": {}
+      }
+    }
+  }
+}
